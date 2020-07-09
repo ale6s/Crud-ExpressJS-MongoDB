@@ -2,12 +2,42 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Home</title>
 </head>
 
 <body>
+    <nav class="main-navigation">
+        <div class="navbar-header animated fadeInUp">
+            <a class="navbar-brand" href="/">ChatoRoom</a>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-list-item">
+                <a href="/" class="nav-link">Home</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="../about" class="nav-link">About Us</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="../contact" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="../drag" class="nav-link">Drag & Drop</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="../ajax" class="nav-link">Ajax</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="/api/users" class="nav-link">Crud</a>
+            </li>
+             <li class="nav-list-item">
+                <a href="../chat" class="nav-link">Chat</a>
+            </li>
+        </ul>
+    </nav>
+
 
     <div class="container">
         <div class="row mt-5 mb-5">
@@ -54,7 +84,7 @@
 
                 <h2 class="text-primary">Update User</h2>
                 <form action="/api/users/update" method="post" class="form-group">
-                    <div class=" text-secondary font-weight-bold"> ID:</div> <input type="text" class="form-control" name="id" placeholder="ID" required/>
+                    <div class=" text-warning font-weight-bold"> ID of user you want to update:</div> <input type="text" class="form-control" name="id" placeholder="ID" required/>
                     <div class=" text-secondary font-weight-bold"> First Name:</div> <input type="text" class="form-control" name="first_name" placeholder="First Name" required/>
                     <div class=" text-secondary font-weight-bold">Last Name: </div><input type="text" class="form-control" name="last_name" placeholder="Last Name" required />
                     <div class=" text-secondary font-weight-bold">Email: </div><input type="Email" class="form-control" name="email" placeholder="Email" required/>
@@ -66,7 +96,7 @@
 
                 <h2 class="text-primary">Delete User</h2>
                 <form action="/api/users/delete" method="post" class="form-group mb-5">
-                        <div class=" text-secondary font-weight-bold"> ID:</div><input type="text" class="form-control" name="id" placeholder="ID" required/>
+                        <div class=" text-danger font-weight-bold"> ID of user you want to delete:</div><input type="text" class="form-control" name="id" placeholder="ID" required/>
                         <button  class="form-control btn-danger mt-2 btn" type="submit">Delete</button>
                 </form>
             </div>

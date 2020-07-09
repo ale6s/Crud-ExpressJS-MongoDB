@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="/socket.io/socket.io.js"></script>
+    <title>ChatRoom</title>
+  </head>
+  <body>
+    <nav class="main-navigation">
+      <div class="navbar-header animated fadeInUp">
+        <a class="navbar-brand" href="index.html">ChatoRoom</a>
+      </div>
+      <ul class="nav-list">
+        <li class="nav-list-item">
+          <a href="/" class="nav-link">Home</a>
+        </li>
+        <li class="nav-list-item">
+          <a href="about" class="nav-link">About Us</a>
+        </li>
+        <li class="nav-list-item">
+          <a href="contact" class="nav-link">Contact</a>
+        </li>
+        <li class="nav-list-item">
+          <a href="drag" class="nav-link">Drag & Drop</a>
+        </li>
+        <li class="nav-list-item">
+          <a href="ajax" class="nav-link">Ajax</a>
+        </li>
+        <li class="nav-list-item">
+          <a href="api/users" class="nav-link">Crud</a>
+        </li>
+        <li class="nav-list-item">
+          <a href="chat" class="nav-link">Chat</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container">
+      <h2 class="text-primary">Chat application</h2>
+      <div style="float: left; width: 300px;">
+        <form class="inline-form">
+          <input
+            id="msg"
+            placeholder="Whats on your mind..."
+            class="form-control"
+          />
+          <button class="btn btn-primary">Send</button>
+        </form>
+      </div>
+
+      <div style="float: right; width: 300px; border: 1px solid black;">
+        <ul id="messages"></ul>
+      </div>
+    </div>
+    <script>
+      var socket = io();
+      document.forms[0].addEventListener("submit", (e) => {
+        e.preventDefault();
+        let input = document.getElementById("msg");
+
+        socket.emit("my chat", input.value);
+        input.value = "";
+      });
+
+      var ul = document.getElementById("messages");
+      socket.on("my chat", (msg) => {
+        let li = document.createElement("li");
+        li.innerHTML = msg;
+        ul.appendChild(li);
+      });
+    </script>
+  </body>
+</html>
